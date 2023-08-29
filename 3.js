@@ -19,9 +19,11 @@ function task3() {
   }
 
   Promise.allSettled([promise1(), promise2()])
-    .then((promise1, promise2) => {
-      console.log(`"Проміс 1:" ${promise1}`, `"Проміс 2:" ${promise2}`);
-    })
+    .then((results) =>
+      results.forEach((result, index) => {
+        console.log(`Проміс ${index + 1}: ${result.status}`);
+      })
+    )
 
     .finally(() => {
       console.log("Завдання 3 завершено");
